@@ -628,7 +628,7 @@ const QuizzesSection = () => {
 
             return (
               <button
-                key={index}
+                key={`${questionIndex}-${index}`}
                 onClick={() => handleAnswer(index)}
                 disabled={selectedAnswer !== null}
                 className={buttonClass}
