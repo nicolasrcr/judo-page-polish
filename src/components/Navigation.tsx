@@ -21,6 +21,12 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
               )}
             >
               <span className="text-base font-serif">{section.icon}</span>
+              {/* Mobile: show both Portuguese and Japanese */}
+              <span className="sm:hidden flex flex-col items-start leading-tight">
+                <span className="text-[10px]">{section.label}</span>
+                <span className="text-[9px] text-primary/70">{section.labelJp}</span>
+              </span>
+              {/* Desktop: show only Portuguese */}
               <span className="hidden sm:inline">{section.label}</span>
             </button>
           ))}
