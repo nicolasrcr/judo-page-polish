@@ -54,10 +54,10 @@
     --gradient-card: linear-gradient(135deg, hsl(240 8% 8%) 0%, hsl(225 15% 12%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(240 10% 5%) 0%, hsl(240 8% 8%) 50%, hsl(240 10% 5%) 100%);
     
-    /* Shadows */
-    --shadow-gold: 0 0 30px hsla(43, 74%, 52%, 0.3);
-    --shadow-card: 0 4px 24px hsla(0, 0%, 0%, 0.4);
-    --shadow-hover: 0 8px 32px hsla(43, 74%, 52%, 0.15);
+    /* Shadows - softer */
+    --shadow-gold: 0 0 40px hsla(43, 74%, 52%, 0.2);
+    --shadow-card: 0 8px 32px hsla(0, 0%, 0%, 0.25);
+    --shadow-hover: 0 12px 40px hsla(43, 74%, 52%, 0.12);
 
     --sidebar-background: 240 10% 5%;
     --sidebar-foreground: 220 10% 55%;
@@ -128,16 +128,17 @@
     @apply text-primary;
   }
 
-  /* Card with gold border */
+  /* Card with gold border - softer */
   .card-judo {
     background: var(--gradient-card);
-    @apply border border-primary/20 rounded-2xl p-6 transition-all duration-300;
+    @apply border border-primary/15 rounded-2xl p-6 transition-all duration-500 ease-out;
+    box-shadow: var(--shadow-card);
   }
 
   .card-judo:hover {
-    @apply border-primary/40;
+    @apply border-primary/30;
     box-shadow: var(--shadow-hover);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   /* Red accent card */
@@ -156,15 +157,16 @@
     font-family: 'Noto Serif JP', serif;
   }
 
-  /* Navigation button */
+  /* Navigation button - softer */
   .nav-btn {
-    @apply px-4 py-2.5 rounded-lg border border-transparent bg-transparent text-muted-foreground 
-           cursor-pointer flex items-center gap-2 whitespace-nowrap transition-all duration-300 
-           text-sm font-medium hover:text-foreground/80;
+    @apply px-4 py-2.5 rounded-xl border border-transparent bg-transparent text-muted-foreground 
+           cursor-pointer flex items-center gap-2 whitespace-nowrap transition-all duration-500 ease-out
+           text-sm font-medium hover:text-foreground/70;
   }
 
   .nav-btn.active {
-    @apply border-primary bg-gradient-to-br from-secondary/60 to-secondary/40 text-primary;
+    @apply border-primary/60 bg-gradient-to-br from-secondary/50 to-secondary/30 text-primary;
+    box-shadow: 0 4px 20px hsla(43, 74%, 52%, 0.1);
   }
 
   /* Gold gradient button */
@@ -190,15 +192,16 @@
     @apply text-background;
   }
 
-  /* Technique card */
+  /* Technique card - softer */
   .technique-card {
     background: var(--gradient-card);
-    @apply border border-primary/20 rounded-xl p-5 transition-all duration-300 cursor-pointer;
+    @apply border border-primary/15 rounded-xl p-5 transition-all duration-500 ease-out cursor-pointer;
+    box-shadow: var(--shadow-card);
   }
 
   .technique-card:hover {
-    @apply border-primary/50;
-    transform: translateY(-2px);
+    @apply border-primary/35;
+    transform: translateY(-1px);
     box-shadow: var(--shadow-hover);
   }
 
@@ -295,53 +298,54 @@
     @apply border-red-500 bg-red-500/20;
   }
 
-  /* Animations */
+  /* Animations - smoother */
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
+    from { opacity: 0; transform: translateX(-12px); }
     to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes pulse-gold {
-    0%, 100% { box-shadow: 0 0 20px hsla(43, 74%, 52%, 0.3); }
-    50% { box-shadow: 0 0 40px hsla(43, 74%, 52%, 0.5); }
+    0%, 100% { box-shadow: 0 0 25px hsla(43, 74%, 52%, 0.15); }
+    50% { box-shadow: 0 0 35px hsla(43, 74%, 52%, 0.25); }
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .animate-slide-in {
-    animation: slideIn 0.4s ease-out;
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .animate-pulse-gold {
-    animation: pulse-gold 2s infinite;
+    animation: pulse-gold 3s ease-in-out infinite;
   }
 
-  /* Hover scale */
+  /* Hover scale - softer */
   .hover-lift {
-    @apply transition-all duration-300;
+    @apply transition-all duration-500 ease-out;
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
   }
 
-  /* Search */
+  /* Search - softer */
   .search-input {
-    @apply w-full px-5 py-3.5 bg-card border-2 border-primary/30 rounded-full text-foreground 
-           text-base outline-none transition-all duration-300;
+    @apply w-full px-5 py-3.5 bg-card border border-primary/20 rounded-full text-foreground 
+           text-base outline-none transition-all duration-500 ease-out;
+    box-shadow: 0 4px 20px hsla(0, 0%, 0%, 0.15);
   }
 
   .search-input:focus {
-    @apply border-primary;
-    box-shadow: var(--shadow-gold);
+    @apply border-primary/50;
+    box-shadow: 0 0 30px hsla(43, 74%, 52%, 0.15);
   }
 
   .search-input::placeholder {
