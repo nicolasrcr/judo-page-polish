@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Check, Star, Shield, Clock, Award, Users, BookOpen, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import kanoImage from "@/assets/jigoro-kano.jpg";
+import shodanImage from "@/assets/shodan-hero.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -90,8 +90,8 @@ const LandingPage = () => {
             <div className="relative">
               <div className="w-full aspect-square max-w-md mx-auto rounded-2xl overflow-hidden border-4 border-primary/30 shadow-gold">
                 <img 
-                  src={kanoImage} 
-                  alt="Jigoro Kano - Fundador do Judô"
+                  src={shodanImage} 
+                  alt="Shodan - Exame Faixa Preta"
                   className="w-full h-full object-cover"
                 />
               </div>
