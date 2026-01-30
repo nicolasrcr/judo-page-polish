@@ -110,7 +110,17 @@ const PaymentRequired = () => {
 
         {/* Help Text */}
         <div className="text-center text-sm text-muted-foreground">
-          <p>Problemas com o pagamento? Entre em contato conosco pelo WhatsApp.</p>
+          <p>
+            Problemas com o pagamento? Entre em contato pelo{' '}
+            <a 
+              href="https://wa.me/5561996634944" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium"
+            >
+              WhatsApp (61) 99663-4944
+            </a>
+          </p>
         </div>
       </main>
 
