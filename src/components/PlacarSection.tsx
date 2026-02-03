@@ -1,6 +1,37 @@
+import { useState } from 'react';
+import { Play } from 'lucide-react';
 import tecladoPlacarImg from '@/assets/teclado-placar.png';
 
 const PlacarSection = () => {
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+
+  const videosTutoriais = [
+    {
+      id: 'pgfKasoI5yc',
+      titulo: 'Guia Rápido do Judô',
+      descricao: 'Neil Adams explica as regras de pontuação, penalidades e sistema de competição em 3 minutos',
+      canal: 'IJF - International Judo Federation',
+      duracao: '3:40',
+      destaque: true
+    },
+    {
+      id: 'TtaV_6ZUfTI',
+      titulo: 'As 6 Formas de Marcar Ippon',
+      descricao: 'Demonstração oficial das 6 maneiras de conseguir a pontuação máxima no Judô',
+      canal: 'IJF - International Judo Federation',
+      duracao: '2:35',
+      destaque: false
+    },
+    {
+      id: 'dnEV5yjAsFY',
+      titulo: 'Regras do Judogi - Explicado',
+      descricao: 'Regras oficiais sobre o uniforme de competição',
+      canal: 'IJF - International Judo Federation',
+      duracao: '2:00',
+      destaque: false
+    }
+  ];
+
   const pontuacoes = [
     {
       nome: 'Ippon',
@@ -527,6 +558,67 @@ const PlacarSection = () => {
             </ul>
           </div>
         </div>
+      </div>
+
+      {/* Vídeos Tutoriais */}
+      <h3 className="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+        <span>🎬</span> Vídeos Tutoriais - Sistema de Pontuação
+      </h3>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {videosTutoriais.map((video) => (
+          <div 
+            key={video.id}
+            className={`card-judo overflow-hidden ${video.destaque ? 'ring-2 ring-primary' : ''}`}
+          >
+            {/* Thumbnail com botão de play */}
+            <div 
+              className="relative aspect-video bg-secondary cursor-pointer group"
+              onClick={() => setActiveVideo(activeVideo === video.id ? null : video.id)}
+            >
+              {activeVideo === video.id ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={video.titulo}
+                />
+              ) : (
+                <>
+                  <img
+                    src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                    alt={video.titulo}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/60 transition-colors">
+                    <div className="w-14 h-14 bg-primary/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-7 h-7 text-secondary ml-1" fill="currentColor" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-0.5 rounded">
+                    {video.duracao}
+                  </div>
+                  {video.destaque && (
+                    <div className="absolute top-2 left-2 bg-primary text-secondary text-xs px-2 py-0.5 rounded font-semibold">
+                      RECOMENDADO
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+            
+            {/* Info do vídeo */}
+            <div className="p-3">
+              <h4 className="font-semibold text-white text-sm mb-1 line-clamp-2">{video.titulo}</h4>
+              <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{video.descricao}</p>
+              <p className="text-xs text-primary">{video.canal}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Dica de Estudo */}
