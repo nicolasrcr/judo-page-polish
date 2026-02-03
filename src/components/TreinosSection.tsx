@@ -50,6 +50,44 @@ const TreinosSection = () => {
     },
   ];
 
+  const ukemiTypes = [
+    { 
+      name: 'Ushiro-Ukemi / Koho-Ukemi', 
+      kanji: '後受身', 
+      desc: 'Amortecimento de queda para TRÁS',
+      details: 'Queixo no peito, braços batem no tatame a 45°, pernas elevadas. Fundamental para projeções como O-soto-gari.',
+      icon: '⬇️'
+    },
+    { 
+      name: 'Yoko-Ukemi / Sokuho-Ukemi', 
+      kanji: '横受身', 
+      desc: 'Amortecimento de queda para o LADO',
+      details: 'Queda lateral com um braço batendo no tatame, pernas afastadas. Usada em projeções laterais como Harai-goshi.',
+      icon: '↔️'
+    },
+    { 
+      name: 'Mae-Ukemi / Zenpo-Ukemi', 
+      kanji: '前受身', 
+      desc: 'Amortecimento de queda para FRENTE',
+      details: 'Queda frontal com antebraços e palmas absorvendo o impacto. Rosto virado para o lado.',
+      icon: '⬆️'
+    },
+    { 
+      name: 'Zenpo-Kaiten-Ukemi', 
+      kanji: '前方回転受身', 
+      desc: 'Rolamento para FRENTE',
+      details: 'Rolamento diagonal sobre o ombro, terminando em posição de defesa. Essencial para projeções de sacrifício.',
+      icon: '🔄'
+    },
+    { 
+      name: 'Outen-Ukemi', 
+      kanji: '横転受身', 
+      desc: 'Rolamento para o LADO',
+      details: 'Rolamento lateral usado em quedas complexas. Faz parte do Kodomo-no-Kata (formas infantis).',
+      icon: '↩️'
+    },
+  ];
+
   const trainingTips = [
     { icon: '🔄', title: 'Aquecimento', desc: 'Sempre inicie com aquecimento geral e específico para evitar lesões' },
     { icon: '🎯', title: 'Foco', desc: 'Concentre-se em poucas técnicas por treino para melhor absorção' },
@@ -89,6 +127,34 @@ const TreinosSection = () => {
           O Judô possui diversos métodos de treinamento, cada um com objetivos específicos. 
           A combinação equilibrada dessas formas desenvolve o judoca completo técnica, física e mentalmente.
         </p>
+      </div>
+
+      {/* Ukemi - Tipos de Quedas */}
+      <h3 className="text-lg font-semibold text-primary flex items-center gap-2 mb-4">
+        <span>🤸</span> Ukemi - Técnicas de Queda
+      </h3>
+      
+      <div className="card-judo mb-6">
+        <p className="text-sm text-foreground/70 mb-4">
+          <strong>Ukemi</strong> (受身) significa "corpo que recebe". São as técnicas de amortecimento de queda, 
+          fundamentais para a segurança no Judô. Um judoca deve dominar todas as formas de ukemi antes de progredir nas técnicas.
+        </p>
+      </div>
+      
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {ukemiTypes.map((ukemi, index) => (
+          <div key={index} className="card-red p-5">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-2xl">{ukemi.icon}</span>
+              <div>
+                <h4 className="font-semibold text-white text-sm">{ukemi.name}</h4>
+                <p className="text-xs text-primary">{ukemi.kanji}</p>
+              </div>
+            </div>
+            <p className="text-sm text-foreground/80 mb-2">{ukemi.desc}</p>
+            <p className="text-xs text-muted-foreground">{ukemi.details}</p>
+          </div>
+        ))}
       </div>
 
       {/* Métodos de Treino */}
